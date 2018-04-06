@@ -1,9 +1,11 @@
 {
   "name": "vue-analysis-tool",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm run clean && tsc --project .",
+    "clean": "rm -rf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,11 +15,15 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "bugs": {
     "url": "https://github.com/keenwon/vue-analysis-tool/issues"
   },
   "homepage": "https://github.com/keenwon/vue-analysis-tool#readme",
   "devDependencies": {
-    "@types/node": "^9.6.1"
+    "@types/node": "^9.6.1",
+    "typescript": "^2.8.1"
   }
 }
