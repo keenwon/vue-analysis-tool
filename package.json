@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run clean",
     "clean": "rm -rf ./dist",
+    "dev": "NODE_ENV=develop webpack-dev-server --color",
     "test": "karma start karma.conf.js --single-run"
   },
   "repository": {
@@ -45,6 +46,8 @@
     "vue-loader": "^14.2.2",
     "vue-property-decorator": "^6.0.0",
     "vue-template-compiler": "^2.5.16",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-merge": "^4.1.2"
   }
 }

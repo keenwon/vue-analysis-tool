@@ -3,12 +3,14 @@
 const path = require('path');
 const webpack = require('webpack');
 
-function getPath(tsPath) {
-  return path.join(__dirname, tsPath);
+function getPath(filePath) {
+  return path.join(__dirname, '..', filePath);
 }
 
 module.exports = {
-  entry: function () { return {}; },
+  entry: {
+    main: getPath('src/index.js')
+  },
   output: {
     path: getPath('dist/'),
     filename: '[name].js'
