@@ -9,7 +9,7 @@ function getPath(filePath) {
 
 module.exports = {
   entry: {
-    main: getPath('src/index.js')
+    app: getPath('app.js')
   },
   output: {
     path: getPath('dist/'),
