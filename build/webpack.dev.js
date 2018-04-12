@@ -8,6 +8,7 @@ module.exports = merge(common, {
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
+  devtool: 'cheap-module-eval-source-map',
   watchOptions: {
     poll: true
   },
