@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean",
     "clean": "rm -rf ./dist",
-    "dev": "NODE_ENV=develop webpack-dev-server --color",
+    "dev": "NODE_ENV=develop webpack-dev-server --config ./example/webpack.config.js  --color",
     "test": "karma start karma.conf.js --single-run"
   },
   "repository": {

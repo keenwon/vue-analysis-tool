@@ -20,7 +20,7 @@
 
 <script>
   import Vue from 'vue';
-  import Analyzer from './src';
+  import Analyzer from '../src';
   import { Component, Watch } from 'vue-property-decorator';
 
   @Analyzer()
