@@ -31,27 +31,32 @@
     isEdit = false;
 
     get countX2() {
+      console.log('get countX2');
       return this.count * 2;
     }
 
     set countX2(value) {
+      console.log('set countX2');
       this.count = Math.floor(value / 2);
     }
 
     created() {
-      // do nothing
+      console.log('created');
     }
 
     @Watch('count')
     onCountChange() {
+      console.log('onCountChange');
       this.num = this.count;
     }
 
     addCount() {
+      console.log('addCount');
       this.count++;
     }
 
     reset() {
+      console.log('reset');
       this.count = 0;
     }
   }

@@ -4,5 +4,6 @@
  */
 export const defaultHooks = [
   'methods',
-  // 'watch'
+  // 'watch'，
+  'computed'
 ];

@@ -14,7 +14,7 @@ export default function Analyzer(option = {}) {
     }
 
     // TODO: delete
-    console.dir(component.options);
+    console.dir(component);
 
     for (const hook of hooks) {
       processor(component, hook);
