@@ -1,3 +1,5 @@
+import { group, groupEnd, log } from '../reporter';
+
 /**
  * 取所有的 watch handler
  */
@@ -19,11 +21,11 @@ function getWatchHandlers(component) {
 /**
  * 生成 console.group 的 name
  */
-function getGroupName(componentName, propertyName, isWatch) {
-  let name = `[${componentName}] methods.${propertyName}`;
+function getGroupName(propertyName, isWatch) {
+  let name = [`methods.${propertyName}`];
 
   if (isWatch) {
-    name += ' (watch handler)';
+    name.push('(watch handler)');
   }
 
   return name;
@@ -52,28 +54,18 @@ function methodsProcessor(component) {
     }
 
     const originalMethod = descriptor.value;
-    const name = getGroupName(componentName, propertyName, isWatchHandler);
+    const name = getGroupName(propertyName, isWatchHandler);
 
-    descriptor.value = function (...args) {
-      console.group(name);
+    descriptor.value = function (...argus) {
+      group(...name);
+
       const start = performance.now();
-
-      const result = originalMethod.apply(this, args);
-
+      const result = originalMethod.apply(this, argus);
       const spend = performance.now() - start;
-      const spendStr = spend.toFixed(3);
 
-      let style = '';
-      if (spend > 5) {
-        style = 'color: red; font-weight: bold';
-      } else if (spend > 2) {
-        style = 'color: orange; font-weight: bold';
-      } else if (spend < 1) {
-        style = 'color: grey;';
-      }
+      log(spend);
+      groupEnd();
 
-      console.log(`spend: %c${spendStr}ms`, style);
-      console.groupEnd();
       return result;
     };
 

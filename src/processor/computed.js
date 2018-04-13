@@ -1,24 +1,16 @@
+import { group, groupEnd, log } from '../reporter';
+
 function hook(name, originalMethod) {
   return function (...argus) {
-    console.group(name);
+    group(name);
+
     const start = performance.now();
-
     const result = originalMethod.apply(this, argus);
-
     const spend = performance.now() - start;
-    const spendStr = spend.toFixed(3);
 
-    let style = '';
-    if (spend > 5) {
-      style = 'color: red; font-weight: bold';
-    } else if (spend > 2) {
-      style = 'color: orange; font-weight: bold';
-    } else if (spend < 1) {
-      style = 'color: grey;';
-    }
+    log(spend);
+    groupEnd();
 
-    console.log(`spend: %c${spendStr}ms`, style);
-    console.groupEnd();
     return result;
   };
 }
@@ -41,7 +33,7 @@ function computedProcessor(component) {
     const descriptor = Object.getOwnPropertyDescriptor(proto, computed);
 
     for (const accessorName of ['get', 'set']) {
-      const name = `[${componentName}] computed.${computed}.${accessorName}`;
+      const name = `computed.${computed}.${accessorName}`;
       descriptor[accessorName] = hook(name, descriptor[accessorName] || noop);
     }
 

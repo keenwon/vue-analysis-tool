@@ -1,4 +1,5 @@
 import processor from './processor';
+import { init as reporterInit } from './reporter';
 import { defaultHooks } from './config';
 
 export default function Analyzer(option = {}) {
@@ -15,6 +16,8 @@ export default function Analyzer(option = {}) {
 
     // TODO: delete
     console.dir(component);
+
+    reporterInit(component);
 
     for (const hook of hooks) {
       processor(component, hook);
