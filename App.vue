@@ -44,6 +44,10 @@
       console.log('created');
     }
 
+    updated() {
+      console.log('updated');
+    }
+
     @Watch('count')
     onCountChange() {
       console.log('onCountChange');
