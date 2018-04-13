@@ -25,15 +25,11 @@ export const defaultHooks = [
   ...lifecycles
 ];
 
-// 橙色
-const colorOrange = '#CD950C';
-// 绿色
-const colorGreen = '#00CD66';
-// 紫色
-const colorPurple = '#7D26CD';
-
 export const colorMap = {
-  methods: colorGreen,
-  computed: colorPurple,
-  lifecycle: colorOrange
+  // 绿色
+  methods: '#008B45',
+  // 紫色
+  computed: '#7D26CD',
+  // 橙色
+  lifecycle: '#CD950C'
 }

@@ -13,9 +13,9 @@ function group(names) {
 
   console.group(
     `%c${componentName}%c ${hook}%c ${_names.join(' ')}`,
-    'background-color: #09f; color: #fafafa; padding: 1px 3px;',
-    `background-color: #fff; color: ${colorMap[hook]}; padding-right: 3px;`,
-    'background-color: #fff; color: #333; padding-right: 3px;'
+    'background: #09f; color: #fafafa; padding: 1px 3px;',
+    `background: #fff; color: ${colorMap[hook]}; padding: 1px 3px 1px 0;`,
+    'background: #fff; color: #333; padding: 1px 3px 1px 0;'
   );
 }
 
@@ -27,6 +27,7 @@ function log(spend) {
   const spendStr = spend.toFixed(3);
 
   let style = '';
+
   if (spend > 5) {
     style = 'color: red; font-weight: bold';
   } else if (spend > 2) {

@@ -57,11 +57,27 @@
     addCount() {
       console.log('addCount');
       this.count++;
+
+      // 耗时+2ms，黄色输出
+      const time = Date.now();
+      while(true) {
+        if (Date.now() - time > 2) {
+          break;
+        }
+      }
     }
 
     reset() {
       console.log('reset');
       this.count = 0;
+
+      // 耗时+1s，红色输出
+      const time = Date.now();
+      while(true) {
+        if (Date.now() - time > 1000) {
+          break;
+        }
+      }
     }
   }
 </script>
