@@ -1,4 +1,4 @@
-import { group, groupEnd, log } from '../reporter';
+import spy from '../spy';
 
 /**
  * 取所有的 watch handler
@@ -53,21 +53,10 @@ function methodsProcessor(component) {
       continue;
     }
 
-    const originalMethod = descriptor.value;
-    const name = getGroupName(propertyName, isWatchHandler);
-
-    descriptor.value = function (...argus) {
-      group(...name);
-
-      const start = performance.now();
-      const result = originalMethod.apply(this, argus);
-      const spend = performance.now() - start;
-
-      log(spend);
-      groupEnd();
-
-      return result;
-    };
+    descriptor.value = spy(
+      getGroupName(propertyName, isWatchHandler),
+      descriptor.value
+    );
 
     Object.defineProperty(proto, propertyName, descriptor);
   }
