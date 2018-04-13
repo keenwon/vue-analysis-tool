@@ -12,8 +12,12 @@ function computedProcessor(component) {
     const descriptor = Object.getOwnPropertyDescriptor(proto, computed);
 
     for (const accessorName of ['get', 'set']) {
-      const name = `computed.${computed}.${accessorName}`;
-      descriptor[accessorName] = spy(name, descriptor[accessorName]);
+      const names = [
+        'computed',
+        `${computed}.${accessorName}`
+      ];
+
+      descriptor[accessorName] = spy(names, descriptor[accessorName]);
     }
 
     Object.defineProperty(proto, computed, descriptor);

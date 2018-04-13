@@ -22,7 +22,7 @@ function getWatchHandlers(component) {
  * 生成 console.group 的 name
  */
 function getGroupName(propertyName, isWatch) {
-  let name = [`methods.${propertyName}`];
+  let name = ['methods', `${propertyName}`];
 
   if (isWatch) {
     name.push('(watch handler)');

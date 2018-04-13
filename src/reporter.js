@@ -1,3 +1,5 @@
+import { colorMap } from './config';
+
 let componentName = '';
 
 // 初始化
@@ -6,11 +8,15 @@ function init(component) {
 }
 
 function group(names) {
-  const str = Array.isArray(names)
-    ? names.join(' ')
-    : names;
+  const _names = names.concat();
+  const hook = _names.shift();
 
-  console.group(`[${componentName}] ${str}`);
+  console.group(
+    `%c${componentName}%c ${hook}%c ${_names.join(' ')}`,
+    'background-color: #09f; color: #fafafa; padding: 1px 3px;',
+    `background-color: #fff; color: ${colorMap[hook]}; padding-right: 3px;`,
+    'background-color: #fff; color: #333; padding-right: 3px;'
+  );
 }
 
 function groupEnd() {

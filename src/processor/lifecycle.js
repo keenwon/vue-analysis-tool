@@ -11,7 +11,12 @@ function lifecycleProcessor(component, hook) {
   const newHook = [];
 
   for (const fn of proto[hook]) {
-    newHook.push(spy(`lifecycle.${hook}`, fn));
+    const names = [
+      'lifecycle',
+      hook
+    ];
+
+    newHook.push(spy(names, fn));
   }
 
   proto[hook] = newHook;
