@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>count: {{count}}</p>
-    <p>num: {{num}}</p>
+    <p>num: {{num | localString}}</p>
     <div>
       <p v-if="!isEdit">
         countX2: {{countX2}}
@@ -13,7 +13,7 @@
         <a href="javascript:;" @click="isEdit = false">done</a>
       </p>
     </div>
-    <button @click="addCount()">count + 1</button>
+    <button @click="addCount()">count + 500</button>
     <button @click="reset()">reset</button>
   </div>
 </template>
@@ -23,8 +23,16 @@
   import Analyzer from '../src';
   import { Component, Watch } from 'vue-property-decorator';
 
+  const localString = function (n) {
+    return n.toLocaleString('en-US');
+  }
+
   @Analyzer()
-  @Component
+  @Component({
+    filters: {
+      localString
+    }
+  })
   export default class Com extends Vue {
     count = 0;
     num = 0;
@@ -56,7 +64,7 @@
 
     addCount() {
       console.log('addCount');
-      this.count++;
+      this.count = this.count + 500;
 
       // 耗时+2ms，黄色输出
       const time = Date.now();
