@@ -71,10 +71,10 @@
       console.log('reset');
       this.count = 0;
 
-      // 耗时+1s，红色输出
+      // 耗时+20ms，红色输出
       const time = Date.now();
       while(true) {
-        if (Date.now() - time > 1000) {
+        if (Date.now() - time > 20) {
           break;
         }
       }

@@ -29,9 +29,9 @@ function log(spend) {
   let style = '';
 
   if (spend > 5) {
-    style = 'color: red; font-weight: bold';
+    style = 'background: red; color: #fff; padding: 0 2px;';
   } else if (spend > 2) {
-    style = 'color: orange; font-weight: bold';
+    style = 'background: orange; color: #fff; padding: 0 2px;';
   } else if (spend < 1) {
     style = 'color: grey;';
   }
