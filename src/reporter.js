@@ -5,8 +5,12 @@ function init(component) {
   componentName = component.name || '';
 }
 
-function group(...argus) {
-  console.group(`[${componentName}] ${argus.join(' ')}`);
+function group(names) {
+  const str = Array.isArray(names)
+    ? names.join(' ')
+    : names;
+
+  console.group(`[${componentName}] ${str}`);
 }
 
 function groupEnd() {
