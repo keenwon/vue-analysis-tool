@@ -27,7 +27,7 @@
     return n.toLocaleString('en-US');
   }
 
-  @Analyzer()
+  @Analyzer
   @Component({
     filters: {
       localString

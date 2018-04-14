@@ -1,26 +1,11 @@
-import processor from './processor';
-import { init as reporterInit } from './reporter';
-import { defaultHooks } from './config';
+import Analyzer from './analyzer';
 
-export default function Analyzer(option = {}) {
+export default function (option = {}) {
+  if (typeof option === 'function') {
+    return Analyzer(option);
+  }
 
-  // 过滤掉用户忽略的
-  const hooks = Array.isArray(option.exclude) && option.exclude.length
-    ? defaultHooks.filter(h => !option.exclude.includes(h))
-    : defaultHooks;
-
-  return component => {
-    if (process.env.NODE_ENV === 'production') {
-      return;
-    }
-
-    // TODO: delete
-    console.dir(component);
-
-    reporterInit(component);
-
-    for (const hook of hooks) {
-      processor(component, hook);
-    }
-  };
+  return function (component) {
+    return Analyzer(component, option);
+  }
 }
