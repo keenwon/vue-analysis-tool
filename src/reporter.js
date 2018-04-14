@@ -23,7 +23,15 @@ function groupEnd() {
   console.groupEnd();
 }
 
-function log(spend) {
+function argusInfo(argus) {
+  if (!argus || !argus.length) {
+    return;
+  }
+
+  console.log.call(console, 'arguments:', argus.join(', '));
+}
+
+function time(spend) {
   const spendStr = spend.toFixed(3);
 
   let style = '';
@@ -43,5 +51,6 @@ export {
   init,
   group,
   groupEnd,
-  log
+  argusInfo,
+  time
 };

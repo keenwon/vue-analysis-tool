@@ -1,4 +1,4 @@
-import { group, groupEnd, log } from './reporter';
+import { group, groupEnd, argusInfo, time } from './reporter';
 
 /**
  * 替换旧函数，记录调用栈 & 耗时等
@@ -11,7 +11,8 @@ export default function (groupName, originalMethod) {
     const result = originalMethod.apply(this, argus);
     const spend = performance.now() - start;
 
-    log(spend);
+    argusInfo(argus);
+    time(spend);
     groupEnd();
 
     return result;
