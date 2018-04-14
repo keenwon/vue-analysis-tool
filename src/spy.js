@@ -6,12 +6,12 @@ import { group, groupEnd, argusInfo, time } from './reporter';
 export default function (groupName, originalMethod) {
   return function (...argus) {
     group(groupName);
+    argusInfo(argus);
 
     const start = performance.now();
     const result = originalMethod.apply(this, argus);
     const spend = performance.now() - start;
 
-    argusInfo(argus);
     time(spend);
     groupEnd();
 

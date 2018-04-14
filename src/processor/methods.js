@@ -21,7 +21,7 @@ function getGroupName(propertyName, isWatch) {
   let name = ['methods', `${propertyName}`];
 
   if (isWatch) {
-    name.push('(watch handler)');
+    name.push('(watcher)');
   }
 
   return name;
