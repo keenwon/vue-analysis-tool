@@ -5,11 +5,7 @@ import spy from '../spy';
  */
 function getWatchHandlers(component) {
   const handlers = [];
-  const proto = component.options && component.options.watch;
-
-  if (!proto) {
-    return handlers;
-  }
+  const proto = component.options.watch;
 
   Object.values(proto).forEach(obj => {
     handlers.push(obj.handler);
@@ -35,13 +31,7 @@ function getGroupName(propertyName, isWatch) {
  * methods & watch 的处理器
  */
 function methodsProcessor(component) {
-  const componentName = component.name || component.__file;
-  const proto = component.options && component.options.methods;
-
-  if (!proto) {
-    return;
-  }
-
+  const proto = component.options.methods;
   const watchHandlers = getWatchHandlers(component);
 
   for (const propertyName of Object.keys(proto)) {

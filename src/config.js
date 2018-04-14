@@ -22,6 +22,7 @@ export const lifecycles = [
 export const defaultHooks = [
   "methods",
   "computed",
+  "filters",
   ...lifecycles
 ];
 
@@ -30,6 +31,8 @@ export const colorMap = {
   methods: '#008B45',
   // 紫色
   computed: '#7D26CD',
+  // 青色
+  filters: '#79CDCD',
   // 橙色
   lifecycle: '#CD950C'
 }

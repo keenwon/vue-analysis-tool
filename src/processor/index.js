@@ -2,6 +2,7 @@ import { lifecycles } from '../config';
 
 import methodsProcessor from './methods';
 import computedProcessor from './computed';
+import filtersProcessor from './filters';
 import lifecycleProcessor from './lifecycle';
 
 function processor(component, hook) {
@@ -9,6 +10,8 @@ function processor(component, hook) {
     return methodsProcessor(component);
   } else if (hook === 'computed') {
     return computedProcessor(component);
+  } else if (hook === 'filters') {
+    return filtersProcessor(component);
   } else if (lifecycles.includes(hook)) {
     return lifecycleProcessor(component, hook);
   } else {
